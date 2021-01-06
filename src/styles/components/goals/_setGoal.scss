@@ -1,0 +1,27 @@
+.setGoal {
+  height: 94vh;
+  position: relative;
+
+  &__goalInput {
+    height: 400px;
+    padding: 20px;
+  }
+
+  &__date {
+    margin: 0;
+  }
+
+  &__deleteButton {
+    transform: translateY(-10px);
+  }
+
+  &__labelContainer {
+    margin-bottom: 10px;
+  }
+
+  &__floatBtn {
+    position: absolute;
+    right: 25px;
+    bottom: 35px;
+  }
+}
