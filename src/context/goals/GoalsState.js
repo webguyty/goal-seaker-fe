@@ -2,6 +2,7 @@ import React, { useReducer } from 'react';
 import GoalsContext from './goalsContext';
 import goalsReducer from './goalsReducer';
 import configureHeaders from '../../utils/configureHeaders';
+import API from '../../config/api'
 import {
   GET_GOALS,
   GOAL_ERROR,
@@ -29,7 +30,7 @@ const GoalsState = (props) => {
   const getGoals = async () => {
     const headers = configureHeaders(localStorage.token);
     try {
-      const res = await fetch('api/dailyGoals', {
+      const res = await fetch(`${API}/dailyGoals`, {
         method: 'GET',
         headers: headers,
         // body: JSON.stringify(goal),
@@ -53,7 +54,7 @@ const GoalsState = (props) => {
     const headers = configureHeaders(localStorage.token);
 
     try {
-      const res = await fetch('api/dailyGoals', {
+      const res = await fetch(`${API}/dailyGoals`, {
         method: 'POST',
         headers: headers,
         body: JSON.stringify(goal),
@@ -79,7 +80,7 @@ const GoalsState = (props) => {
     const headers = configureHeaders(localStorage.token);
 
     try {
-      const res = await fetch(`api/dailyGoals/goal/${id}`, {
+      const res = await fetch(`${API}/dailyGoals/goal/${id}`, {
         method: 'PUT',
         headers: headers,
         body: JSON.stringify(goal),
@@ -99,7 +100,7 @@ const GoalsState = (props) => {
   const deleteGoal = async (id) => {
     const headers = configureHeaders(localStorage.token);
     try {
-      const res = await fetch(`api/dailyGoals/goal/${id}`, {
+      const res = await fetch(`${API}/dailyGoals/goal/${id}`, {
         method: 'DELETE',
         headers: headers,
       });

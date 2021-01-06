@@ -1,7 +1,8 @@
-import React, { useReducer, useContext } from 'react';
+import React, { useReducer } from 'react';
 import AuthContext from './authContext';
 import authReducer from './authReducer';
 import configureHeaders from '../../utils/configureHeaders';
+import API from '../../config/api'
 
 import {
   REGISTER_SUCCESS,
@@ -31,7 +32,7 @@ const AuthState = (props) => {
     const headers = configureHeaders(localStorage.token);
 
     try {
-      const res = await fetch('./api/auth', {
+      const res = await fetch(`${API}/auth`, {
         method: 'GET',
         headers: headers,
       });
@@ -58,7 +59,7 @@ const AuthState = (props) => {
 
     // Form data is username and password
     try {
-      const res = await fetch('api/users', {
+      const res = await fetch(`${API}/users`, {
         method: 'POST',
         headers: headers,
         body: JSON.stringify(formData),
@@ -89,7 +90,7 @@ const AuthState = (props) => {
     const headers = configureHeaders(localStorage.token);
 
     try {
-      const res = await fetch('api/auth', {
+      const res = await fetch(`${API}/auth`, {
         method: 'POST',
         headers: headers,
         body: JSON.stringify(formData),
