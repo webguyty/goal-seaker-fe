@@ -62,10 +62,11 @@ const GoalsState = (props) => {
 
       const data = await res.json();
 
+      console.log(data);
+
       // If response is false, throw error with message from auth middleware
       if (!res.ok) throw data.msg;
 
-      // const res = await axios.post('/api/contacts', contact, config);
       dispatch({
         type: ADD_GOAL,
         payload: data,

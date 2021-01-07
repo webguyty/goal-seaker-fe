@@ -37,6 +37,7 @@ const Login = () => {
                 <div className='input-field col s12'>
                   <input
                     id='username'
+                    name='username'
                     type='text'
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
@@ -50,6 +51,7 @@ const Login = () => {
                 <div className='input-field col s12'>
                   <input
                     id='password'
+                    name='password'
                     type='password'
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
