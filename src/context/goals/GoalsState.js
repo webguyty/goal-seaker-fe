@@ -119,7 +119,7 @@ const GoalsState = (props) => {
 
   // Clear Goals
   const clearGoals = () => {
-    dispatch({ type: CLEAR_GOALS });ç
+    dispatch({ type: CLEAR_GOALS });
   };
 
   // // Set Current Contact
