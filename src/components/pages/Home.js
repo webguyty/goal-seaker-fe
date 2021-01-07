@@ -39,11 +39,11 @@ const Home = () => {
         </div>
 
         {/* Cards */}
-        <div class='row'>
-          <div class='col s12 m4'>
-            <div class='card blue'>
-              <div class='card-content white-text'>
-                <span class='card-title'>Write down your goals</span>
+        <div className='row'>
+          <div className='col s12 m4'>
+            <div className='home__page__card card blue'>
+              <div className='card-content white-text'>
+                <span className='home__page__card-title card-title'>Write down your goals</span>
                 <p>
                   Write down any goals that cross your mind. Make sure to write
                   them in present tense as if you have already achieved them.
@@ -51,10 +51,10 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div class='col s12 m4'>
-            <div class='card blue'>
-              <div class='card-content white-text'>
-                <span class='card-title'>Repeat everyday</span>
+          <div className='col s12 m4'>
+            <div className='home__page__card card blue'>
+              <div className='card-content white-text'>
+                <span className='home__page__card-title card-title'>Repeat everyday</span>
                 <p>
                   Invest 5 minutes everyday to achieve the goals of your dreams.
                   Be as specific as you like and let your imagination run wild.
@@ -62,10 +62,10 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div class='col s12 m4'>
-            <div class='card blue'>
-              <div class='card-content white-text'>
-                <span class='card-title'>Examples</span>
+          <div className='col s12 m4'>
+            <div className='home__page__card card blue'>
+              <div className='card-content white-text'>
+                <span className='home__page__card-title card-title'>Examples</span>
                 <p>
                   I have $4 million in investments
                   <br />
