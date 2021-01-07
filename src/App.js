@@ -1,5 +1,5 @@
 import React, { useEffect, Fragment } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
 import Navbar from './components/layout/Navbar';
 import Home from './components/pages/Home';
@@ -21,6 +21,8 @@ const App = () => {
     M.AutoInit();
   });
 
+  // Comment
+
   return (
     <AuthState>
       <GoalsState>
@@ -28,12 +30,12 @@ const App = () => {
           <Fragment>
             <Navbar />
             <Switch>
-              <Route exact path='/' to component={Home} />
+              <Route exact path='/' component={Home} />
               <PrivateRoute exact path='/dashboard' component={Dashboard} />
-              {/* <Route exact path='/dashboard' to component={Dashboard}></Route> */}
               <Route exact path='/login' component={Login} />
               <Route exact path='/register' component={Register} />
               <Route exact path='/about' component={About} />
+              <Redirect from='*' to='/' />
             </Switch>
           </Fragment>
         </Router>
