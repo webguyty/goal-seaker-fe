@@ -25,10 +25,6 @@
   box-shadow: 7px 10px 10px rgba($color: #000000, $alpha: 0.15);
   transition: text-decoration 1s ease;
 
-  // &:hover {
-  //   min-height: 300px;
-  // }
-
   &:hover .home__page__card-title {
     text-decoration: underline;
   }
