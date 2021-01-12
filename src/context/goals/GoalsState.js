@@ -137,6 +137,15 @@ const GoalsState = (props) => {
     });
   };
 
+  // Evaluate all goals
+  const evalGoals = () => {
+    console.log('You are evaluating some goals')
+    // dispatch({
+    //   type: CLEAR_CURRENT,
+    // });
+  };
+
+
   // // Filter Contacts
   // const filterContacts = (text) => {
   //   dispatch({
@@ -168,6 +177,7 @@ const GoalsState = (props) => {
         //       clearFilter,
         getGoals,
         clearGoals,
+        evalGoals
       }}
     >
       {props.children}

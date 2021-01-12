@@ -2,10 +2,14 @@ import React, { useContext } from 'react';
 import Preloader from '../layout/Preloader';
 
 import AuthContext from '../../context/auth/authContext';
+import GoalsContext from '../../context/goals/goalsContext';
 
 const EvalGoals = () => {
-  const authContext = useContext(AuthContext);
-  const { isAuthenticated, loadUser, loading } = authContext;
+
+  const goalsContext = useContext(GoalsContext);
+  const { getGoals, goals, evalGoals } = goalsContext;
+
+  evalGoals()
 
   return (
     <div>
