@@ -44,7 +44,6 @@ const GoalsState = (props) => {
       });
     } catch (err) {
       console.error(err);
-      console.log('fail');
       dispatch({ type: GOAL_ERROR, payload: err });
     }
   };
@@ -138,8 +137,8 @@ const GoalsState = (props) => {
   };
 
   // Evaluate all goals
-  const evalGoals = () => {
-    console.log('You are evaluating some goals')
+  const evalGoals = (gs) => {
+    console.log(`'You are evaluating some goals' ${JSON.stringify(gs)}`)
     // dispatch({
     //   type: CLEAR_CURRENT,
     // });

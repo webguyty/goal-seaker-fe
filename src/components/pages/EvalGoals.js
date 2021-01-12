@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Preloader from '../layout/Preloader';
 
 import AuthContext from '../../context/auth/authContext';
@@ -9,7 +9,14 @@ const EvalGoals = () => {
   const goalsContext = useContext(GoalsContext);
   const { getGoals, goals, evalGoals } = goalsContext;
 
-  evalGoals()
+  useEffect(() => {
+    if (goals.length === 0) {
+      getGoals()
+    }
+    // eslint-disable-next-line
+  }, []);
+
+  evalGoals(goals)
 
   return (
     <div>

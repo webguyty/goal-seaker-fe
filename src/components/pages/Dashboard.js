@@ -4,11 +4,11 @@ import GoalsList from '../goals/GoalsList';
 import SetGoal from '../goals/SetGoal';
 
 import AuthContext from '../../context/auth/authContext';
-import GoalsContext from '../../context/goals/goalsContext';
+// import GoalsContext from '../../context/goals/goalsContext';
 
 const Dashboard = () => {
   const authContext = useContext(AuthContext);
-  const goalsContext = useContext(GoalsContext);
+  // const goalsContext = useContext(GoalsContext);
 
   const { loadUser, loading } = authContext;
 

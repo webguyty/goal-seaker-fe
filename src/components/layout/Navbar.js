@@ -37,6 +37,13 @@ const Navbar = () => {
     <Fragment>
       <li>
         <Link
+          to='/evaluateGoals'
+        >
+          Eval Goals
+        </Link>
+      </li>
+      <li>
+        <Link
           to='/'
           onClick={() => {
             clearGoals();
