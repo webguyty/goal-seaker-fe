@@ -18,6 +18,8 @@ const EvalGoals = () => {
 
   evalGoals(goals)
 
+  // console.log(goals)
+
   return (
     <div>
       <h1>You've reached eval page</h1>

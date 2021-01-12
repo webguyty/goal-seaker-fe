@@ -137,8 +137,28 @@ const GoalsState = (props) => {
   };
 
   // Evaluate all goals
-  const evalGoals = (gs) => {
-    console.log(`'You are evaluating some goals' ${JSON.stringify(gs)}`)
+  const evalGoals = (goalsArray) => {
+    // goalsArr is array of total goal objects
+
+    const goalStats = [];
+    const objG = {
+      word: '',
+      count: 0,
+      expression: ''
+    }
+    const objE = {
+      expression: '',
+      count: ''
+    }
+
+
+    goalsArray.forEach(goalsDay => {
+      // All goals for single day
+      goalsDay.goalsArr.forEach(singleGoal => {
+        console.log(singleGoal)
+      })
+    })
+
     // dispatch({
     //   type: CLEAR_CURRENT,
     // });
