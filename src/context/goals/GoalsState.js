@@ -138,8 +138,7 @@ const GoalsState = (props) => {
 
   // Evaluate all goals
   const evalGoals = (goalsArray) => {
-    // goalsArr is array of total goal objects
-
+    
     const goalStats = [];
     const objG = {
       word: '',
@@ -150,8 +149,8 @@ const GoalsState = (props) => {
       expression: '',
       count: ''
     }
-
-
+    
+    // goalsArr is array of total goal objects
     goalsArray.forEach(goalsDay => {
       // All goals for single day
       goalsDay.goalsArr.forEach(singleGoal => {
@@ -162,7 +161,20 @@ const GoalsState = (props) => {
             return
           }
 
-          goalStats.push(w)
+          // Check to see if word has been added to stats array
+          // If so, increase count
+          if (goalStats.length !== 0) {
+            goalStats.forEach((stat, i) => {
+
+              // Create regex from word above
+              const re = new RegExp(w, 'i')
+              if (stat.word.match(re)) {
+                stat.count += 1; 
+              }
+            })
+          }
+          
+          goalStats.push({word:w, count:1})
         })
         
       })
