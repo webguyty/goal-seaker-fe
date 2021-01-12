@@ -7,6 +7,7 @@ import Dashboard from './components/pages/Dashboard';
 import Login from './components/pages/Login';
 import Register from './components/pages/Register';
 import About from './components/pages/About';
+import EvalGoals from './components/pages/EvalGoals';
 import PrivateRoute from './components/routing/PrivateRoute';
 
 import 'materialize-css/dist/css/materialize.min.css';
@@ -35,6 +36,7 @@ const App = () => {
               <Route exact path='/login' component={Login} />
               <Route exact path='/register' component={Register} />
               <Route exact path='/about' component={About} />
+              <PrivateRoute exact path='/evaluateGoals' component={EvalGoals} />
               <Redirect from='*' to='/' />
             </Switch>
           </Fragment>
