@@ -155,9 +155,20 @@ const GoalsState = (props) => {
     goalsArray.forEach(goalsDay => {
       // All goals for single day
       goalsDay.goalsArr.forEach(singleGoal => {
-        console.log(singleGoal)
+        const words = singleGoal.split(" ");
+        words.forEach(w => {
+          // Filter out any simple words
+          if (w.match(/^i$|^a$|^am$/gi)) {
+            return
+          }
+
+          goalStats.push(w)
+        })
+        
       })
     })
+
+    console.log(goalStats)
 
     // dispatch({
     //   type: CLEAR_CURRENT,
