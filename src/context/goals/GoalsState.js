@@ -174,9 +174,10 @@ const GoalsState = (props) => {
           let duplicateFlag = false;
           
           // Filter out any simple words
-          if (w.match(/^i$|^a$|^am$/gi)) {
+          if (w.match(/^(i|a|am|my)$/gi)) {
             return
           }
+
 
           // Check to see if word has been added to stats array
           // If so, increase count
@@ -191,11 +192,12 @@ const GoalsState = (props) => {
               } 
             })
           } 
+
+          // Add word to wordStats if no duplicate
           if (!duplicateFlag) {
             wordStats.push({word:w, count:1, statements: [singleGoal]})
           }
-          
-          duplicateFlag = false
+  
         });
         // End single words
         
