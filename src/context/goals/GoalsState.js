@@ -139,14 +139,15 @@ const GoalsState = (props) => {
   // Evaluate all goals
   const evalGoals = (goalsArray) => {
     
-    const goalStats = [];
+    const wordStats = [];
+    const statementStats = [];
     const objG = {
       word: '',
       count: 0,
-      expression: ''
+      statements: []
     }
     const objE = {
-      expression: '',
+      statement: '',
       count: ''
     }
     
@@ -154,8 +155,24 @@ const GoalsState = (props) => {
     goalsArray.forEach(goalsDay => {
       // All goals for single day
       goalsDay.goalsArr.forEach(singleGoal => {
+        
+
+        // Statement expression evaluation
+        //
+        // if (statementStats.length !== 0) {
+        //   statementStats.forEach(s => {
+
+        //   })
+        // }
+
+        // statementStats.push({expression: singleGoal, count:1})
+
+        // Single words evaluation
+        //
         const words = singleGoal.split(" ");
         words.forEach(w => {
+          let duplicateFlag = false;
+          
           // Filter out any simple words
           if (w.match(/^i$|^a$|^am$/gi)) {
             return
@@ -163,24 +180,29 @@ const GoalsState = (props) => {
 
           // Check to see if word has been added to stats array
           // If so, increase count
-          if (goalStats.length !== 0) {
-            goalStats.forEach((stat, i) => {
-
+          if (wordStats.length !== 0) {
+            wordStats.forEach((stat) => {
               // Create regex from word above
               const re = new RegExp(w, 'i')
               if (stat.word.match(re)) {
                 stat.count += 1; 
-              }
+                stat.statements.push(singleGoal)
+                duplicateFlag = true
+              } 
             })
+          } 
+          if (!duplicateFlag) {
+            wordStats.push({word:w, count:1, statements: [singleGoal]})
           }
           
-          goalStats.push({word:w, count:1})
-        })
+          duplicateFlag = false
+        });
+        // End single words
         
       })
     })
 
-    console.log(goalStats)
+    console.log(wordStats)
 
     // dispatch({
     //   type: CLEAR_CURRENT,
