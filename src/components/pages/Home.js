@@ -1,8 +1,8 @@
-import React, { useEffect, useContext } from 'react';
-import { Route, Redirect, Link } from 'react-router-dom';
-import Preloader from '../layout/Preloader';
+import React, { useEffect, useContext } from "react";
+import { Route, Redirect, Link } from "react-router-dom";
+import Preloader from "../layout/Preloader";
 
-import AuthContext from '../../context/auth/authContext';
+import AuthContext from "../../context/auth/authContext";
 
 const Home = () => {
   const authContext = useContext(AuthContext);
@@ -18,7 +18,7 @@ const Home = () => {
   if (isAuthenticated) {
     return (
       <Route>
-        <Redirect to='/dashboard' />
+        <Redirect to="/dashboard" />
       </Route>
     );
   }
@@ -28,10 +28,10 @@ const Home = () => {
   }
 
   return (
-    <div className='home__page'>
-      <div className='container'>
-        <div className='row'>
-          <div className='col s12'>
+    <div className="home__page">
+      <div className="container">
+        <div className="row">
+          <div className="col s12">
             <h1>Welcome to Goal Seeker</h1>
             <h4>A tool for motivation and goal acquisition</h4>
             <h5>Directions:</h5>
@@ -39,11 +39,13 @@ const Home = () => {
         </div>
 
         {/* Cards */}
-        <div className='row'>
-          <div className='col s12 m4'>
-            <div className='home__page__card card blue'>
-              <div className='card-content white-text'>
-                <span className='home__page__card-title card-title'>Write down your goals</span>
+        <div className="row">
+          <div className="col s12 m4">
+            <div className="home__page__card card blue">
+              <div className="card-content white-text">
+                <span className="home__page__card-title card-title">
+                  Write down your goals
+                </span>
                 <p>
                   Write down any goals that cross your mind. Make sure to write
                   them in present tense as if you have already achieved them.
@@ -51,10 +53,12 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div className='col s12 m4'>
-            <div className='home__page__card card blue'>
-              <div className='card-content white-text'>
-                <span className='home__page__card-title card-title'>Repeat everyday</span>
+          <div className="col s12 m4">
+            <div className="home__page__card card blue">
+              <div className="card-content white-text">
+                <span className="home__page__card-title card-title">
+                  Repeat everyday
+                </span>
                 <p>
                   Invest 5 minutes everyday to achieve the goals of your dreams.
                   Be as specific as you like and let your imagination run wild.
@@ -62,10 +66,12 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div className='col s12 m4'>
-            <div className='home__page__card card blue'>
-              <div className='card-content white-text'>
-                <span className='home__page__card-title card-title'>Examples</span>
+          <div className="col s12 m4">
+            <div className="home__page__card card blue">
+              <div className="card-content white-text">
+                <span className="home__page__card-title card-title">
+                  Examples
+                </span>
                 <p>
                   I have $4 million in investments
                   <br />
@@ -79,9 +85,9 @@ const Home = () => {
           </div>
         </div>
         {/* End cards */}
-        <div className='row'>
-          <div className='col s12'>
-            <p className='home__page__bigText blue-text text-lighten-2'>
+        <div className="row">
+          <div className="col s12">
+            <p className="home__page__bigText blue-text text-lighten-2">
               Program your subconscious for success
             </p>
           </div>

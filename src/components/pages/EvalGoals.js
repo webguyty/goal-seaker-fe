@@ -29,21 +29,27 @@ const EvalGoals = () => {
   };
 
   return (
-    <div>
-      <h1>You've reached eval page</h1>
-      <p onClick={(e) => runEval(e)}>Evaluate ur goals</p>
-      <div>
-        <h3>Words</h3>
-        <ul>
-          {wordStats && wordStats.map((ws, i) => <li key={i}>{ws.word}</li>)}
-        </ul>
-      </div>
-      <div>
-        <h3>Statements</h3>
-        <ul>
-          {statementStats &&
-            statementStats.map((ss, i) => <li key={i}>{ss.statement}</li>)}
-        </ul>
+    <div className="eval__page">
+      <div className="container">
+        <h2 className="eval__headline">You've reached eval page</h2>
+        <div className="row center-align">
+          <a class="waves-effect waves-light btn" onClick={(e) => runEval(e)}>
+            <i class="material-icons left">storage</i>Evaluate Goals
+          </a>
+        </div>
+        <div>
+          <h3>Words</h3>
+          <ul>
+            {wordStats && wordStats.map((ws, i) => <li key={i}>{ws.word}</li>)}
+          </ul>
+        </div>
+        <div>
+          <h3>Statements</h3>
+          <ul>
+            {statementStats &&
+              statementStats.map((ss, i) => <li key={i}>{ss.statement}</li>)}
+          </ul>
+        </div>
       </div>
     </div>
   );
