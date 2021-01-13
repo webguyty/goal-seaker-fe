@@ -141,31 +141,45 @@ const GoalsState = (props) => {
     
     const wordStats = [];
     const statementStats = [];
-    const objG = {
-      word: '',
-      count: 0,
-      statements: []
-    }
-    const objE = {
-      statement: '',
-      count: ''
-    }
+
+    // Object Reference
+    // const WordObj = {
+    //   word: '',
+    //   count: 0,
+    //   statements: []
+    // }
+    // const StatementObj = {
+    //   statement: '',
+    //   count: ''
+    // }
     
     // goalsArr is array of total goal objects
     goalsArray.forEach(goalsDay => {
       // All goals for single day
       goalsDay.goalsArr.forEach(singleGoal => {
-        
+
 
         // Statement expression evaluation
         //
-        // if (statementStats.length !== 0) {
-        //   statementStats.forEach(s => {
+        let statementDuplicateFlag = false
+        if (statementStats.length !== 0) {
+          statementStats.forEach(statement => {
+            // Create regex from statement above to check if duplicate
+            const re = new RegExp(singleGoal, 'ig');
+            if (statement.statement.trim().match(re)) {
+              statement.count += 1; 
+              // stat.statements.push(singleGoal)
+              statementDuplicateFlag = true
+            } 
 
-        //   })
-        // }
+          })
+        }
 
-        // statementStats.push({expression: singleGoal, count:1})
+        if (!statementDuplicateFlag) {
+          statementStats.push({statement: singleGoal, count:1})
+        }
+
+        statementDuplicateFlag = false;
 
         // Single words evaluation
         //
@@ -174,16 +188,15 @@ const GoalsState = (props) => {
           let duplicateFlag = false;
           
           // Filter out any simple words
-          if (w.match(/^(i|a|am|my)$/gi)) {
+          if (w.match(/^(i|a|am|my|the|in)$/gi)) {
             return
           }
-
 
           // Check to see if word has been added to stats array
           // If so, increase count
           if (wordStats.length !== 0) {
             wordStats.forEach((stat) => {
-              // Create regex from word above
+              // Create regex from word above to check if duplicate
               const re = new RegExp(w, 'i')
               if (stat.word.match(re)) {
                 stat.count += 1; 
@@ -205,6 +218,7 @@ const GoalsState = (props) => {
     })
 
     console.log(wordStats)
+    console.log(statementStats)
 
     // dispatch({
     //   type: CLEAR_CURRENT,
