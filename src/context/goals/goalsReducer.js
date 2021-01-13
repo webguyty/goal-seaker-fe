@@ -7,7 +7,8 @@ import {
   CLEAR_GOALS,
   DELETE_GOAL,
   UPDATE_GOAL,
-} from '../types';
+  EVALUATE_GOALS,
+} from "../types";
 
 export default (state, action) => {
   switch (action.type) {
@@ -45,6 +46,11 @@ export default (state, action) => {
         filtered: null,
         error: null,
         current: null,
+      };
+    case EVALUATE_GOALS:
+      return {
+        ...state,
+        evaluation: action.payload,
       };
     //   ?
     //   case FILTER_GOALS:

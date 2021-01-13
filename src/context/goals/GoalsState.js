@@ -1,25 +1,27 @@
-import React, { useReducer } from 'react';
-import GoalsContext from './goalsContext';
-import goalsReducer from './goalsReducer';
-import configureHeaders from '../../utils/configureHeaders';
-import API from '../../config/api'
+import React, { useReducer } from "react";
+import GoalsContext from "./goalsContext";
+import goalsReducer from "./goalsReducer";
+import configureHeaders from "../../utils/configureHeaders";
+import API from "../../config/api";
 import {
   GET_GOALS,
   GOAL_ERROR,
   ADD_GOAL,
   UPDATE_GOAL,
+  EVALUATE_GOALS,
   CLEAR_GOALS,
   SET_CURRENT,
   CLEAR_CURRENT,
   DELETE_GOAL,
   // CLEAR_FILTER,
   // FILTER_GOALS,
-} from '../types';
+} from "../types";
 
 const GoalsState = (props) => {
   const initialState = {
     goals: [],
     current: null,
+    evaluation: null,
     // filtered: null,
     error: null,
   };
@@ -31,9 +33,8 @@ const GoalsState = (props) => {
     const headers = configureHeaders(localStorage.token);
     try {
       const res = await fetch(`${API}/dailyGoals`, {
-        method: 'GET',
+        method: "GET",
         headers: headers,
-        // body: JSON.stringify(goal),
       });
 
       const data = await res.json();
@@ -54,7 +55,7 @@ const GoalsState = (props) => {
 
     try {
       const res = await fetch(`${API}/dailyGoals`, {
-        method: 'POST',
+        method: "POST",
         headers: headers,
         body: JSON.stringify(goal),
       });
@@ -81,7 +82,7 @@ const GoalsState = (props) => {
 
     try {
       const res = await fetch(`${API}/dailyGoals/goal/${id}`, {
-        method: 'PUT',
+        method: "PUT",
         headers: headers,
         body: JSON.stringify(goal),
       });
@@ -101,7 +102,7 @@ const GoalsState = (props) => {
     const headers = configureHeaders(localStorage.token);
     try {
       const res = await fetch(`${API}/dailyGoals/goal/${id}`, {
-        method: 'DELETE',
+        method: "DELETE",
         headers: headers,
       });
 
@@ -138,7 +139,6 @@ const GoalsState = (props) => {
 
   // Evaluate all goals
   const evalGoals = (goalsArray) => {
-    
     const wordStats = [];
     const statementStats = [];
 
@@ -152,31 +152,28 @@ const GoalsState = (props) => {
     //   statement: '',
     //   count: ''
     // }
-    
+
     // goalsArr is array of total goal objects
-    goalsArray.forEach(goalsDay => {
+    goalsArray.forEach((goalsDay) => {
       // All goals for single day
-      goalsDay.goalsArr.forEach(singleGoal => {
-
-
+      goalsDay.goalsArr.forEach((singleGoal) => {
         // Statement expression evaluation
         //
-        let statementDuplicateFlag = false
+        let statementDuplicateFlag = false;
         if (statementStats.length !== 0) {
-          statementStats.forEach(statement => {
+          statementStats.forEach((statement) => {
             // Create regex from statement above to check if duplicate
-            const re = new RegExp(singleGoal, 'ig');
+            const re = new RegExp(singleGoal, "ig");
             if (statement.statement.trim().match(re)) {
-              statement.count += 1; 
+              statement.count += 1;
               // stat.statements.push(singleGoal)
-              statementDuplicateFlag = true
-            } 
-
-          })
+              statementDuplicateFlag = true;
+            }
+          });
         }
 
         if (!statementDuplicateFlag) {
-          statementStats.push({statement: singleGoal, count:1})
+          statementStats.push({ statement: singleGoal, count: 1 });
         }
 
         statementDuplicateFlag = false;
@@ -184,12 +181,12 @@ const GoalsState = (props) => {
         // Single words evaluation
         //
         const words = singleGoal.split(" ");
-        words.forEach(w => {
+        words.forEach((w) => {
           let duplicateFlag = false;
-          
+
           // Filter out any simple words
           if (w.match(/^(i|a|am|my|the|in)$/gi)) {
-            return
+            return;
           }
 
           // Check to see if word has been added to stats array
@@ -197,34 +194,34 @@ const GoalsState = (props) => {
           if (wordStats.length !== 0) {
             wordStats.forEach((stat) => {
               // Create regex from word above to check if duplicate
-              const re = new RegExp(w, 'i')
+              const re = new RegExp(w, "i");
               if (stat.word.match(re)) {
-                stat.count += 1; 
-                stat.statements.push(singleGoal)
-                duplicateFlag = true
-              } 
-            })
-          } 
+                stat.count += 1;
+                stat.statements.push(singleGoal);
+                duplicateFlag = true;
+              }
+            });
+          }
 
           // Add word to wordStats if no duplicate
           if (!duplicateFlag) {
-            wordStats.push({word:w, count:1, statements: [singleGoal]})
+            wordStats.push({ word: w, count: 1, statements: [singleGoal] });
           }
-  
         });
         // End single words
-        
-      })
-    })
+      });
+    });
 
-    console.log(wordStats)
-    console.log(statementStats)
+    const fullStats = { wordStats, statementStats };
 
-    // dispatch({
-    //   type: CLEAR_CURRENT,
-    // });
+    // console.log(wordStats);
+    // console.log(statementStats);
+
+    dispatch({
+      type: EVALUATE_GOALS,
+      payload: fullStats,
+    });
   };
-
 
   // // Filter Contacts
   // const filterContacts = (text) => {
@@ -246,6 +243,7 @@ const GoalsState = (props) => {
       value={{
         goals: state.goals,
         current: state.current,
+        evaluation: state.evaluation,
         //       filtered: state.filtered,
         error: state.error,
         addGoal,
@@ -257,7 +255,7 @@ const GoalsState = (props) => {
         //       clearFilter,
         getGoals,
         clearGoals,
-        evalGoals
+        evalGoals,
       }}
     >
       {props.children}
