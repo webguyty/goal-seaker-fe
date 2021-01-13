@@ -214,9 +214,6 @@ const GoalsState = (props) => {
 
     const fullStats = { wordStats, statementStats };
 
-    // console.log(wordStats);
-    // console.log(statementStats);
-
     dispatch({
       type: EVALUATE_GOALS,
       payload: fullStats,
