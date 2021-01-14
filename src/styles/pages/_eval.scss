@@ -14,20 +14,6 @@
   background-color: white;
   display: flex;
 
-  &--word {
-    & li {
-      margin: 2px 0;
-
-      &:not(:first-of-type) {
-        margin-left: 10px;
-      }
-    }
-  }
-
-  &--statement {
-    flex-direction: column;
-  }
-
   & li {
     position: relative;
     padding: 5px;
@@ -46,5 +32,24 @@
     padding: 2px 5px;
     font-size: 16px;
     line-height: 16px;
+  }
+
+  &--word {
+    & li {
+      margin: 2px 0;
+
+      &:not(:first-of-type) {
+        margin-left: 15px;
+      }
+    }
+  }
+
+  &--statement {
+    flex-direction: column;
+    padding-right: 10px;
+
+    & li {
+      margin-bottom: 10px;
+    }
   }
 }

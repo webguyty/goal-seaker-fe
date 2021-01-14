@@ -7,8 +7,8 @@ const EvalGoals = () => {
   const goalsContext = useContext(GoalsContext);
   const { getGoals, goals, evalGoals, evaluation } = goalsContext;
 
-  const [wordStats, setWordStats] = useState("");
-  const [statementStats, setStatementStats] = useState("");
+  const [wordStats, setWordStats] = useState([]);
+  const [statementStats, setStatementStats] = useState();
 
   useEffect(() => {
     getGoals();
@@ -17,13 +17,18 @@ const EvalGoals = () => {
 
   useEffect(() => {
     if (evaluation !== null) {
-      setWordStats(evaluation.wordStats);
-      setStatementStats(evaluation.statementStats);
+      const { wordStats, statementStats } = evaluation;
+      wordStats.sort((a, b) => b.count - a.count);
+      statementStats.sort((a, b) => b.count - a.count);
+      setWordStats(wordStats);
+      setStatementStats(statementStats);
     }
   }, [evaluation]);
 
   const runEval = (e) => {
     e.preventDefault();
+    setWordStats([]);
+    setStatementStats([]);
     getGoals();
     evalGoals(goals);
   };
@@ -47,7 +52,7 @@ const EvalGoals = () => {
               wordStats.map((ws, i) => (
                 <li key={i}>
                   {ws.word}{" "}
-                  {ws.count > 0 && (
+                  {ws.count > 1 && (
                     <p className="eval__ul__badge">{ws.count}</p>
                   )}
                 </li>
@@ -61,7 +66,7 @@ const EvalGoals = () => {
               statementStats.map((ss, i) => (
                 <li key={i}>
                   {ss.statement}{" "}
-                  {ss.count > 0 && (
+                  {ss.count > 1 && (
                     <p className="eval__ul__badge">{ss.count}</p>
                   )}
                 </li>
