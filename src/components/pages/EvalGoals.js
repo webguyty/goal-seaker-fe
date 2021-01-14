@@ -39,7 +39,7 @@ const EvalGoals = () => {
         </div>
         <div>
           <h3>Words</h3>
-          <ul>
+          <ul className="eval__ul--word">
             {wordStats && wordStats.map((ws, i) => <li key={i}>{ws.word}</li>)}
           </ul>
         </div>

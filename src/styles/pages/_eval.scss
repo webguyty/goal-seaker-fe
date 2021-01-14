@@ -1,5 +1,5 @@
 .eval__page {
-  background-color: #333333;
+  background-color: #747474;
   padding: 30px 0;
 
   min-height: 1200px;
@@ -8,4 +8,21 @@
 .eval__headline {
   margin-top: 0;
   text-align: center;
+}
+
+.eval__ul--word {
+  background-color: white;
+  display: flex;
+
+  & li {
+    padding: 5px;
+    border: 2px solid black;
+    border-radius: 5px;
+    text-transform: capitalize;
+    margin: 2px 0;
+
+    &:not(:first-of-type) {
+      margin-left: 10px;
+    }
+  }
 }
