@@ -5,7 +5,13 @@ import GoalsContext from "../../context/goals/goalsContext";
 
 const EvalGoals = () => {
   const goalsContext = useContext(GoalsContext);
-  const { getGoals, goals, evalGoals, evaluation } = goalsContext;
+  const {
+    getGoals,
+    goals,
+    evalGoals,
+    evaluation,
+    setGoalStatement,
+  } = goalsContext;
 
   const [wordStats, setWordStats] = useState([]);
   const [statementStats, setStatementStats] = useState();
@@ -50,12 +56,14 @@ const EvalGoals = () => {
           <ul className="eval__ul eval__ul--word">
             {wordStats &&
               wordStats.map((ws, i) => (
-                <li key={i}>
-                  {ws.word}{" "}
-                  {ws.count > 1 && (
-                    <p className="eval__ul__badge">{ws.count}</p>
-                  )}
-                </li>
+                <a key={i} className="modal-trigger" href="#wordModal">
+                  <li key={i} onClick={() => setGoalStatement(ws.statements)}>
+                    {ws.word}{" "}
+                    {ws.count > 1 && (
+                      <p className="eval__ul__badge">{ws.count}</p>
+                    )}
+                  </li>
+                </a>
               ))}
           </ul>
         </div>

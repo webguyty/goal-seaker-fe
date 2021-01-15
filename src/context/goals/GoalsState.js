@@ -13,6 +13,7 @@ import {
   SET_CURRENT,
   CLEAR_CURRENT,
   DELETE_GOAL,
+  SET_GOAL_STATEMENT,
   // CLEAR_FILTER,
   // FILTER_GOALS,
 } from "../types";
@@ -22,6 +23,7 @@ const GoalsState = (props) => {
     goals: [],
     current: null,
     evaluation: null,
+    statements: [],
     // filtered: null,
     error: null,
   };
@@ -220,6 +222,13 @@ const GoalsState = (props) => {
     });
   };
 
+  const setGoalStatement = (statements) => {
+    dispatch({
+      payload: statements,
+      type: SET_GOAL_STATEMENT,
+    });
+  };
+
   // // Filter Contacts
   // const filterContacts = (text) => {
   //   dispatch({
@@ -243,10 +252,12 @@ const GoalsState = (props) => {
         evaluation: state.evaluation,
         //       filtered: state.filtered,
         error: state.error,
+        statements: state.statements,
         addGoal,
         updateGoal,
         deleteGoal,
         setCurrent,
+        setGoalStatement,
         clearCurrent,
         //       filterGoals,
         //       clearFilter,

@@ -5,6 +5,7 @@ export const SET_CURRENT = "SET_CURRENT";
 export const CLEAR_CURRENT = "CLEAR_CURRENT";
 export const UPDATE_GOAL = "UPDATE_GOAL";
 export const EVALUATE_GOALS = "EVALUATE_GOALS";
+export const SET_GOAL_STATEMENT = "SET_GOAL_STATEMENT";
 export const FILTER_GOALS = "FILTER_GOALS";
 export const CLEAR_GOALS = "CLEAR_GOALS";
 export const CLEAR_FILTER = "CLEAR_FILTER";

@@ -8,6 +8,7 @@ import {
   DELETE_GOAL,
   UPDATE_GOAL,
   EVALUATE_GOALS,
+  SET_GOAL_STATEMENT,
 } from "../types";
 
 export default (state, action) => {
@@ -70,6 +71,11 @@ export default (state, action) => {
       return {
         ...state,
         current: action.payload,
+      };
+    case SET_GOAL_STATEMENT:
+      return {
+        ...state,
+        statements: action.payload,
       };
     case CLEAR_CURRENT:
       return {
