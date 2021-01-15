@@ -7,6 +7,7 @@ const WordModal = () => {
   console.log(statements);
 
   return (
+    // Need to style
     <div id="wordModal" className="modal">
       <div className="modal-content">
         <h4>Modal Header</h4>
