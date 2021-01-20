@@ -139,6 +139,10 @@ const GoalsState = (props) => {
     });
   };
 
+  function escapeRegExp(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+  }
+
   // Evaluate all goals
   const evalGoals = (goalsArray) => {
     const wordStats = [];
@@ -159,6 +163,7 @@ const GoalsState = (props) => {
     goalsArray.forEach((goalsDay) => {
       // All goals for single day
       goalsDay.goalsArr.forEach((singleGoal) => {
+        console.log(singleGoal);
         // Statement expression evaluation
         //
         let statementDuplicateFlag = false;
