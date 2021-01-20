@@ -23,7 +23,7 @@ const GoalsState = (props) => {
     goals: [],
     current: null,
     evaluation: null,
-    statements: [],
+    goalStats: [],
     // filtered: null,
     error: null,
   };
@@ -63,8 +63,6 @@ const GoalsState = (props) => {
       });
 
       const data = await res.json();
-
-      console.log(data);
 
       // If response is false, throw error with message from auth middleware
       if (!res.ok) throw data.msg;
@@ -163,14 +161,13 @@ const GoalsState = (props) => {
     goalsArray.forEach((goalsDay) => {
       // All goals for single day
       goalsDay.goalsArr.forEach((singleGoal) => {
-        console.log(singleGoal);
         // Statement expression evaluation
         //
         let statementDuplicateFlag = false;
         if (statementStats.length !== 0) {
           statementStats.forEach((statement) => {
             // Create regex from statement above to check if duplicate
-            const re = new RegExp(singleGoal, "ig");
+            const re = new RegExp(escapeRegExp(singleGoal), "ig");
             if (statement.statement.trim().match(re)) {
               statement.count += 1;
               // stat.statements.push(singleGoal)
@@ -201,7 +198,7 @@ const GoalsState = (props) => {
           if (wordStats.length !== 0) {
             wordStats.forEach((stat) => {
               // Create regex from word above to check if duplicate
-              const re = new RegExp(w, "i");
+              const re = new RegExp(escapeRegExp(w), "i");
               if (stat.word.match(re)) {
                 stat.count += 1;
                 stat.statements.push(singleGoal);
@@ -227,9 +224,9 @@ const GoalsState = (props) => {
     });
   };
 
-  const setGoalStatement = (statements) => {
+  const setGoalStats = (stats) => {
     dispatch({
-      payload: statements,
+      payload: stats,
       type: SET_GOAL_STATEMENT,
     });
   };
@@ -257,12 +254,12 @@ const GoalsState = (props) => {
         evaluation: state.evaluation,
         //       filtered: state.filtered,
         error: state.error,
-        statements: state.statements,
+        goalStats: state.goalStats,
         addGoal,
         updateGoal,
         deleteGoal,
         setCurrent,
-        setGoalStatement,
+        setGoalStats,
         clearCurrent,
         //       filterGoals,
         //       clearFilter,

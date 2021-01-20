@@ -75,7 +75,7 @@ export default (state, action) => {
     case SET_GOAL_STATEMENT:
       return {
         ...state,
-        statements: action.payload,
+        goalStats: action.payload,
       };
     case CLEAR_CURRENT:
       return {

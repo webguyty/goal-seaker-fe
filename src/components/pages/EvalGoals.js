@@ -5,13 +5,7 @@ import GoalsContext from "../../context/goals/goalsContext";
 
 const EvalGoals = () => {
   const goalsContext = useContext(GoalsContext);
-  const {
-    getGoals,
-    goals,
-    evalGoals,
-    evaluation,
-    setGoalStatement,
-  } = goalsContext;
+  const { getGoals, goals, evalGoals, evaluation, setGoalStats } = goalsContext;
 
   const [wordStats, setWordStats] = useState([]);
   const [statementStats, setStatementStats] = useState();
@@ -64,7 +58,7 @@ const EvalGoals = () => {
                   <li
                     className="eval__li eval__li--word"
                     key={i}
-                    onClick={() => setGoalStatement(ws.statements)}
+                    onClick={() => setGoalStats(ws)}
                   >
                     {ws.word}{" "}
                     {ws.count > 1 && <p className="eval__badge">{ws.count}</p>}
