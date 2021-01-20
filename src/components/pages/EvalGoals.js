@@ -56,7 +56,11 @@ const EvalGoals = () => {
           <ul className="eval__ul eval__ul--word">
             {wordStats &&
               wordStats.map((ws, i) => (
-                <a key={i} className="modal-trigger" href="#wordModal">
+                <a
+                  key={i}
+                  className="modal-trigger eval__li__trigger"
+                  href="#wordModal"
+                >
                   <li
                     className="eval__li eval__li--word"
                     key={i}

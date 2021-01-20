@@ -14,6 +14,7 @@
   background-color: white;
   display: flex;
   flex-wrap: wrap;
+  padding-top: 10px;
 
   &--statement {
     flex-direction: column;
@@ -28,17 +29,17 @@
   border-radius: 5px;
   text-transform: capitalize;
 
+  // --word li style here as trigger is parent for triggering modal
+  &__trigger {
+    margin-right: 20px;
+    margin-bottom: 10px;
+  }
+
   &--word {
-    margin: 2px;
   }
 
   &--statement {
-    // flex-direction: column;
-    // padding-right: 10px;
-
     margin-bottom: 10px;
-    & li {
-    }
   }
 }
 
