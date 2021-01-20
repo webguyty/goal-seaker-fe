@@ -57,11 +57,13 @@ const EvalGoals = () => {
             {wordStats &&
               wordStats.map((ws, i) => (
                 <a key={i} className="modal-trigger" href="#wordModal">
-                  <li key={i} onClick={() => setGoalStatement(ws.statements)}>
+                  <li
+                    className="eval__li eval__li--word"
+                    key={i}
+                    onClick={() => setGoalStatement(ws.statements)}
+                  >
                     {ws.word}{" "}
-                    {ws.count > 1 && (
-                      <p className="eval__ul__badge">{ws.count}</p>
-                    )}
+                    {ws.count > 1 && <p className="eval__badge">{ws.count}</p>}
                   </li>
                 </a>
               ))}
@@ -72,11 +74,9 @@ const EvalGoals = () => {
           <ul className="eval__ul eval__ul--statement">
             {statementStats &&
               statementStats.map((ss, i) => (
-                <li key={i}>
+                <li className="eval__li eval__li--statement" key={i}>
                   {ss.statement}{" "}
-                  {ss.count > 1 && (
-                    <p className="eval__ul__badge">{ss.count}</p>
-                  )}
+                  {ss.count > 1 && <p className="eval__badge">{ss.count}</p>}
                 </li>
               ))}
           </ul>
