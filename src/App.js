@@ -14,7 +14,7 @@ import Register from "./components/pages/Register";
 import About from "./components/pages/About";
 import EvalGoals from "./components/pages/EvalGoals";
 import PrivateRoute from "./components/routing/PrivateRoute";
-import WordModal from "./components/goals/WordModal";
+import EvalModal from "./components/goals/EvalModal";
 
 import "materialize-css/dist/css/materialize.min.css";
 import M from "materialize-css/dist/js/materialize.min.js";
@@ -43,7 +43,7 @@ const App = () => {
               <PrivateRoute exact path="/evaluateGoals" component={EvalGoals} />
               <Redirect from="*" to="/" />
             </Switch>
-            <WordModal />
+            <EvalModal />
           </Fragment>
         </Router>
       </GoalsState>
