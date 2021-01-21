@@ -45,7 +45,7 @@ function boldWord(sentence, word) {
   const w = new RegExp(`(${word})`, "gi");
 
   return reactStringReplace(sentence, w, (match, i) => (
-    <span className="eval__modal__bold" key={i}>
+    <span className="eval__modal__selection" key={i}>
       {match}
     </span>
   ));

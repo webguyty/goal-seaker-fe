@@ -27,7 +27,7 @@
   padding: 5px;
   border: 2px solid black;
   border-radius: 5px;
-  text-transform: capitalize;
+  // text-transform: capitalize;
 
   // --word li style here as trigger is parent for triggering modal
   &__trigger {
@@ -36,6 +36,7 @@
   }
 
   &--word {
+    text-transform: capitalize;
   }
 
   &--statement {

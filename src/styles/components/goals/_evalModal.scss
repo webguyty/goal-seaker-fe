@@ -1,5 +1,19 @@
+$color: #1976d2;
+
 .eval__modal {
+  & h4 {
+    color: $color;
+  }
+
   &__bold {
     font-weight: bold;
+  }
+
+  &__color {
+    color: $color;
+  }
+
+  &__selection {
+    @extend .eval__modal__bold, .eval__modal__color;
   }
 }
