@@ -18,16 +18,17 @@ const WordModal = () => {
     // Need to style
     <div id="wordModal" className="modal eval__modal">
       <div className="modal-content eval__modal__content">
+        {/* Place word in title and uppercase it */}
         <h4>{wordCapitalized}</h4>
+        <p>
+          <span className="eval__modal__bold">{wordCapitalized}</span> found in
+          the following statements:
+        </p>
         {/* Loop through and display all the statements + bold word*/}
-        <ul className="collection with-header">
-          <li className="collection-header">
-            <span className="eval__modal__bold">{wordCapitalized}</span> found
-            in the following statements:
-          </li>
+        <ul className="eval__ul eval__ul--statement">
           {statements &&
             statements.map((statement, i) => (
-              <li className="collection-item" key={i}>
+              <li className="eval__li eval__li--statement" key={i}>
                 {boldWord(statement, word)}
               </li>
             ))}
