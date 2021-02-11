@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useContext } from 'react';
-import Moment from 'react-moment';
-import M from 'materialize-css/dist/js/materialize.min.js';
+import React, { useState, useEffect, useContext } from "react";
+import Moment from "react-moment";
+import M from "materialize-css/dist/js/materialize.min.js";
 
-import AuthContext from '../../context/auth/authContext';
-import GoalsContext from '../../context/goals/goalsContext';
+import AuthContext from "../../context/auth/authContext";
+import GoalsContext from "../../context/goals/goalsContext";
 
 const SetGoal = () => {
   const authContext = useContext(AuthContext);
@@ -18,7 +18,7 @@ const SetGoal = () => {
     clearCurrent,
   } = goalsContext;
 
-  const [goalsStr, setGoalsStr] = useState('');
+  const [goalsStr, setGoalsStr] = useState("");
   const [date, setDate] = useState(new Date());
 
   // Read any current goals selected
@@ -71,7 +71,7 @@ const SetGoal = () => {
   // Button for new daily goal
   const newDailyGoal = () => {
     clearCurrent();
-    setGoalsStr('');
+    setGoalsStr("");
     setDate(new Date());
   };
 
@@ -84,46 +84,46 @@ const SetGoal = () => {
   };
 
   return (
-    <div className='setGoal'>
-      <div className='row'>
-        <div className='col m8 offset-m2'>
-          <h3>We are adding some goals</h3>
-          <p className='setGoal__date'>
-            <Moment format='MMM DD YYYY, h:mm a'>{date}</Moment>
+    <div className="setGoal">
+      <div className="row">
+        <div className="col m8 offset-m2">
+          <h3>Add Goals</h3>
+          <p className="setGoal__date">
+            <Moment format="MMM DD YYYY, h:mm a">{date}</Moment>
           </p>
-          <form className='setGoal__form'>
-            <div className='setGoal__labelContainer'>
-              <label htmlFor='setGoal-goalInput'>
-                Add what you want in life
+          <form className="setGoal__form">
+            <div className="setGoal__labelContainer">
+              <label htmlFor="setGoal-goalInput">
+                Seperate each goal statement on a new line
               </label>
               {current && (
-                <span className='right'>
+                <span className="right">
                   <button
                     onClick={(e) => onDelete(e, current._id)}
-                    className='setGoal__deleteButton waves-effect waves-light btn-small red'
+                    className="setGoal__deleteButton waves-effect waves-light btn-small red"
                   >
-                    <i className='medium material-icons'>delete_forever</i>
+                    <i className="medium material-icons">delete_forever</i>
                   </button>
                 </span>
               )}
             </div>
 
             <textarea
-              id='setGoal-goalInput'
-              className='setGoal__goalInput'
-              placeholder='This is some text'
+              id="setGoal-goalInput"
+              className="setGoal__goalInput"
+              placeholder="Add goals and dreams that you want in life"
               value={goalsStr}
               onChange={(e) => setGoalsStr(e.target.value)}
             />
-            <div className='row center-align'>
+            <div className="row center-align">
               <button
-                className='btn waves-effect waves-light'
-                type='submit'
+                className="btn waves-effect waves-light"
+                type="submit"
                 // Save if new goal, update if current is set
                 onClick={!current ? onSave : (e) => onUpdate(e, current._id)}
               >
-                {!current ? 'Save' : 'Update'}
-                <i className='material-icons right'>send</i>
+                {!current ? "Save" : "Update"}
+                <i className="material-icons right">send</i>
               </button>
             </div>
           </form>
@@ -132,11 +132,11 @@ const SetGoal = () => {
 
       {/* Floating add button */}
       <button
-        className='btn-floating btn-large waves-effect waves-light red bottom setGoal__floatBtn'
+        className="btn-floating btn-large waves-effect waves-light red bottom setGoal__floatBtn"
         // style={{ marginRight: '10px' }}
         onClick={() => newDailyGoal()}
       >
-        <i className='material-icons'>add</i>
+        <i className="material-icons">add</i>
       </button>
     </div>
   );
