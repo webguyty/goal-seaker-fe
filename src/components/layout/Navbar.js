@@ -1,9 +1,9 @@
-import React, { Fragment, useEffect, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Fragment, useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
 
-import M from 'materialize-css/dist/js/materialize.min.js';
-import AuthContext from '../../context/auth/authContext';
-import GoalsContext from '../../context/goals/goalsContext';
+import M from "materialize-css/dist/js/materialize.min.js";
+import AuthContext from "../../context/auth/authContext";
+import GoalsContext from "../../context/goals/goalsContext";
 
 const Navbar = () => {
   const authContext = useContext(AuthContext);
@@ -14,21 +14,21 @@ const Navbar = () => {
 
   useEffect(() => {
     // Initialize Sidebar
-    var elems = document.querySelectorAll('.sidenav');
-    M.Sidenav.init(elems, { edge: 'right' });
+    var elems = document.querySelectorAll(".sidenav");
+    M.Sidenav.init(elems, { edge: "right" });
     // es-lint disable-next-line
   }, []);
 
   const linksGuest = (
     <Fragment>
       <li>
-        <Link to='/login'>Login</Link>
+        <Link to="/login">Login</Link>
       </li>
       <li>
-        <Link to='/register'>Register</Link>
+        <Link to="/register">Register</Link>
       </li>
       <li>
-        <a href='/about'>About</a>
+        <a href="/about">About</a>
       </li>
     </Fragment>
   );
@@ -36,15 +36,11 @@ const Navbar = () => {
   const linksUser = (
     <Fragment>
       <li>
-        <Link
-          to='/evaluateGoals'
-        >
-          Eval Goals
-        </Link>
+        <Link to="/evaluateGoals">Evaluate Goals</Link>
       </li>
       <li>
         <Link
-          to='/'
+          to="/"
           onClick={() => {
             clearGoals();
             logout();
@@ -58,25 +54,25 @@ const Navbar = () => {
 
   return (
     <Fragment>
-      <nav className='nav red darken-3'>
-        <div className='nav-wrapper'>
-          <Link to='/' className='brand-logo'>
+      <nav className="nav red darken-3">
+        <div className="nav-wrapper">
+          <Link to="/" className="brand-logo">
             Goal Seeker
           </Link>
           <a
-            href='/#'
-            data-target='mobile-demo'
-            className='sidenav-trigger right'
+            href="/#"
+            data-target="mobile-demo"
+            className="sidenav-trigger right"
           >
-            <i className='material-icons'>menu</i>
+            <i className="material-icons">menu</i>
           </a>
-          <ul className='right hide-on-med-and-down'>
+          <ul className="right hide-on-med-and-down">
             {isAuthenticated ? linksUser : linksGuest}
           </ul>
         </div>
       </nav>
 
-      <ul className='sidenav no-autoinit' id='mobile-demo'>
+      <ul className="sidenav no-autoinit" id="mobile-demo">
         {isAuthenticated ? linksUser : linksGuest}
       </ul>
     </Fragment>

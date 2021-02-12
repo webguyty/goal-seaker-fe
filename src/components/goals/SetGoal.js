@@ -94,7 +94,7 @@ const SetGoal = () => {
           <form className="setGoal__form">
             <div className="setGoal__labelContainer">
               <label htmlFor="setGoal-goalInput">
-                Seperate each goal statement on a new line
+                Seperate each goal statement on a new line.
               </label>
               {current && (
                 <span className="right">
