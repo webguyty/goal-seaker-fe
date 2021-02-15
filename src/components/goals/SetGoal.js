@@ -22,7 +22,7 @@ const SetGoal = () => {
   const [date, setDate] = useState(new Date());
 
   // Read any current goals selected
-  // Pull in current daily goal. If daily goal is null save as new daily goal
+  // Pull in current daily goal - If daily goal is null save as new daily goal
   useEffect(() => {
     if (current) {
       setDate(current.date);
