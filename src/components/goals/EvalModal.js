@@ -11,9 +11,6 @@ const WordModal = () => {
     ? word.charAt(0).toUpperCase() + word.slice(1)
     : "";
 
-  // const se = "Homie This is a string homie";
-  // const wo = "is";
-
   return (
     // Need to style
     <div id="wordModal" className="modal eval__modal">

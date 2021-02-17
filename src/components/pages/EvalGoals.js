@@ -11,7 +11,12 @@ const EvalGoals = () => {
   const [statementStats, setStatementStats] = useState();
 
   useEffect(() => {
-    getGoals();
+    async function loadGoals() {
+      await getGoals();
+    }
+    loadGoals();
+    runEval();
+
     // eslint-disable-next-line
   }, []);
 
@@ -25,8 +30,7 @@ const EvalGoals = () => {
     }
   }, [evaluation]);
 
-  const runEval = (e) => {
-    e.preventDefault();
+  const runEval = () => {
     setWordStats([]);
     setStatementStats([]);
     getGoals();
@@ -36,11 +40,14 @@ const EvalGoals = () => {
   return (
     <div className="eval__page">
       <div className="container">
-        <h2 className="eval__headline">You've reached eval page</h2>
+        <h2 className="eval__headline">Evaluation</h2>
         <div className="row center-align">
           <a
             className="waves-effect waves-light btn"
-            onClick={(e) => runEval(e)}
+            onClick={(e) => {
+              e.preventDefault();
+              runEval();
+            }}
           >
             <i className="material-icons left">storage</i>Evaluate Goals
           </a>
