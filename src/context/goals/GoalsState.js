@@ -189,7 +189,7 @@ const GoalsState = (props) => {
           let duplicateFlag = false;
 
           // Filter out any simple words
-          if (w.match(/^(i|a|am|my|the|in)$/gi)) {
+          if (w.match(/^(i|a|am|my|the|in|of|for|and)$/gi)) {
             return;
           }
 
